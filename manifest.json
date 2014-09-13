@@ -1,0 +1,14 @@
+{
+   "background": {
+      "persistent": false,
+      "scripts": [ "vendor/jquery-2.1.1.js", "background.js"]
+   },
+   "browser_action": {
+      "default_popup": "main.html"
+   },
+   "description": "Increase your google-fu",
+   "manifest_version": 2,
+   "name": "Haystack",
+   "permissions": [ "storage", "webNavigation", "tabs", "background", "<all_urls>" ],
+   "version": "0.1"
+}
