@@ -1,0 +1,6 @@
+@CHARSET "UTF-8";
+
+#haystack{
+	position:fixed;right:0;top:0;z-index:9999;width:600px;border:10px solid #000;z-index:9999999999;
+	width:600px;border:10px solid #000;
+}

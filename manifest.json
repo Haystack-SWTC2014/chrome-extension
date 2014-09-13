@@ -10,5 +10,14 @@
    "manifest_version": 2,
    "name": "Haystack",
    "permissions": [ "storage", "webNavigation", "tabs", "background", "<all_urls>" ],
-   "version": "0.1"
+   "version": "0.1",
+   "web_accessible_resources": ["main.html"],
+   "content_scripts": [
+    {
+      "matches": ["https://www.google.com/*"],
+      "css": ["divinjectorstyle.css"],
+      "js": ["vendor/jquery-2.1.1.js","divinjector.js"],
+      "run_at":"document_end"
+    }
+  ]
 }
