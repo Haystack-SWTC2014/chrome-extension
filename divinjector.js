@@ -3,10 +3,22 @@
  * 
  */
 
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+var haystack = getParameterByName('haystack');
 
 var search = $('#gbqfq').val();
 
 $(function() {
+		
+	if(haystack !="true"){
+	
+	if(typeof search !== "undefined"){
 
 	$("#gsr").append("<div id='haystack'>Pick one of these guys</div>");
 
@@ -68,6 +80,8 @@ $(function() {
 										$("#hay" + key2).on(
 												"click",
 												function() {
+													
+													$('<input/>').attr({type:'hidden',name:'haystack',value:'true'}).appendTo('#gbqf');	
 											
 													$('#gbqfq').val(val2);
 													$( "#gbqf" ).submit();
@@ -107,5 +121,11 @@ $(function() {
 		}
 
 	});
+	
+	}
+	
+	}else{
+		$("#gsr").append("<div id='haystack'><a style='color:#ffffff;' class='btn btn-primary btn-sm' href='#' role='button'>Get More HayStacks!</a></div>");				
+	}
 
 });
