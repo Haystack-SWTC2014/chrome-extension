@@ -8,7 +8,7 @@ var search = $('#gbqfq').val();
 
 $(function() {
 
-	$("#gsr").append("<div id='haystack'></div>");
+	$("#gsr").append("<div id='haystack'>Pick one of these guys</div>");
 
 	$.post("http://localhost/step1.php", {
 		query : search
@@ -20,13 +20,10 @@ $(function() {
 
 		if (obj.type == "domain") {
 
-			//alert("need step 2");
 			$.each(obj.options, function(key, val) {
 
-				items.push("<a id='hay" + key + "' href='#' ><li>" + val
+				items.push("<a class='list-group-item' id='hay" + key + "' href='#' ><li>" + val
 						+ "</li></a>");
-
-				// alert(key);
 
 			});
 
@@ -34,13 +31,15 @@ $(function() {
 				"class" : "my-new-list",
 				html : items.join("")
 			}).appendTo("div#haystack");
+			
+			$("#haystack").append("<div style='float:right;background:transparent;'><small>Haystack!</small></div>");
 
 			$.each(obj.options, function(key, val) {
 				$("#hay" + key).on(
 						"click",
 						function() {
 
-							$("div#haystack").html("");
+							$("div#haystack").html("Here you go");
 
 							$.post("http://localhost/step2.php", {
 								query : search,
@@ -54,7 +53,7 @@ $(function() {
 								if (obj2.type == "search") {
 
 									$.each(obj2.options, function(key2, val2) {
-										items.push("<a id='hay" + key2
+										items.push("<a  class='list-group-item' id='hay" + key2
 												+ "' href='#'><li>" + val2 + "</li></a>");
 									});
 
@@ -63,12 +62,13 @@ $(function() {
 										html : items.join("")
 									}).appendTo("div#haystack");
 									
+									$("#haystack").append("<div style='float:right;background:transparent;'><small>Haystack!</small></div>");
+									
 									$.each(obj2.options, function(key2, val2) {
 										$("#hay" + key2).on(
 												"click",
 												function() {
-													
-													//alert(val2);
+											
 													$('#gbqfq').val(val2);
 													$( "#gbqf" ).submit();
 												});
@@ -76,12 +76,34 @@ $(function() {
 
 								}
 							});
+							
+							
 
 						});
 			});
 
 		} else {
+			$.each(obj.options, function(key1, val) {
+				items.push("<a  class='list-group-item' id='hay" + key
+						+ "' href='#'><li>" + val + "</li></a>");
+			});
 
+			$("<ul/>", {
+				"class" : "my-new-list",
+				html : items.join("")
+			}).appendTo("div#haystack");
+			
+			$("#haystack").append("<div style='float:right;background:transparent;'><small>Haystack!</small></div>");
+			
+			$.each(obj.options, function(key, val) {
+				$("#hay" + key).on(
+						"click",
+						function() {
+					
+							$('#gbqfq').val(val);
+							$( "#gbqf" ).submit();
+						});
+			});
 		}
 
 	});
