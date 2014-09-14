@@ -11,7 +11,7 @@
    "name": "Haystack",
    "permissions": [ "storage", "webNavigation", "tabs", "background", "<all_urls>" ],
    "version": "0.1",
-   "web_accessible_resources": ["main.html"],
+   "web_accessible_resources": ["main.html","responseA.json"],
    "content_scripts": [
     {
       "matches": ["https://www.google.com/*"],

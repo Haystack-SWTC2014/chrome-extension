@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
 
 #haystack{
-	position:fixed;right:0;top:0;z-index:9999;width:600px;border:10px solid #000;z-index:9999999999;
-	width:600px;border:10px solid #000;
+	position:fixed;right:50px;top:150px;z-index:9999;width:auto;height:300px;border:1px solid #000;
+	background:#ffffff;padding:20px;
 }

@@ -1,9 +1,1 @@
-{
-    "type": "domain",
-    "options": [
-        "web development",
-        "cooking",
-        "skydiving",
-        "car repair"
-    ]
-}
+{"type": "domain","options": ["web development","cooking","skydiving","car repair"]}
